@@ -9,18 +9,19 @@ white = Color(0xFFFFFF,1)
 
 blackOutline = LineStyle(1,black)
 
-square = RectangleAsset(75,75,blackOutline,white)
+square = RectangleAsset(40,40,blackOutline,white)
 
-buildBoard(): 
+def buildBoard():
+    board = [0*10,0*10,0*10,0*10,0*10,0*10,0*10,0*10,0*10,0*10]
+
+def redrawAll(): 
     for row in range(0,10): 
         for col in range(0,10): 
-            print(board[row][col],' ',end = '') 
-        print()
+            Sprite(square,(40*row+100,40*col+64))
 
 if __name__ == '__main__':
 
-buildBoard()
-
-Sprite(square)
-App().run()
+    redrawAll()
+    
+    App().run()
 
