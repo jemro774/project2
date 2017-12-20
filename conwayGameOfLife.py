@@ -35,6 +35,8 @@ def mouseClick(event):
         Sprite(blackSquare,(0,200))
     elif event.x > 0 and event.x < 40 and event.y > 240 and event.y < 280:
         Sprite(blackSquare,(0,240))
+    elif event.x > 0 and event.x < 40 and event.y > 280 and event.y < 320:
+        Sprite(blackSquare,(0,280))
 
 if __name__ == '__main__':
 
