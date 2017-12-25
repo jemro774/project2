@@ -13,7 +13,7 @@ whiteSquare = RectangleAsset(40,40,blackOutline,white)
 blackSquare = RectangleAsset(40,40,blackOutline,black)
 
 def buildBoard():
-    board = [0*10,0*10,0*10,0*10,0*10,0*10,0*10,0*10,0*10,0*10]
+    board = ['0'*10,'0'*10,'0'*10,'0'*10,'0'*10,'0'*10,'0'*10,'0'*10,'0'*10,'0'*10]
 
 def redrawAll(): 
     for row in range(0,10): 
@@ -46,4 +46,3 @@ if __name__ == '__main__':
     
     App().listenMouseEvent('click',mouseClick)
     App().run()
-
