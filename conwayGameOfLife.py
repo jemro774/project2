@@ -13,22 +13,26 @@ whiteSquare = RectangleAsset(40,40,blackOutline,white)
 blackSquare = RectangleAsset(40,40,blackOutline,black)
 
 def buildBoard():
-    board = ['0'*10,'0'*10,'0'*10,'0'*10,'0'*10,'0'*10,'0'*10,'0'*10,'0'*10,'0'*10]
+    return ['0'*10,'0'*10,'0'*10,'0'*10,'0'*10,'0'*10,'0'*10,'0'*10,'0'*10,'0'*10]
 
-def redrawAll(): 
-    for row in range(0,10): 
-        for col in range(0,10): 
-            Sprite(whiteSquare,(40*row,40*col))
-
-def mouseClick(event):
+def redrawAll():
     for row in range(0,10): 
         for col in range(0,10):
-            if event.x > 40*row and event.x < 40*row+40 and event.y > 40*col and event.y < 40*col+40:
+            if data['board'][row][col] == '0':
+                Sprite(whiteSquare,(40*row,40*col))
+            if data['board'][row][col] == '1':
                 Sprite(blackSquare,(40*row,40*col))
 
-if __name__ == '__main__':
+def mouseClick(event):
+    row = event.x/40
+    col = event.y/40
+    data['board'][row][col] == '1'
+    redrawAll()
 
-    buildBoard()
+if __name__ == '__main__':
+    
+    data = {}
+    data['board'] = buildBoard()
     
     redrawAll()
     
