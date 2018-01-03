@@ -16,20 +16,40 @@ def buildBoard():
     return [['0']*10,['0']*10,['0']*10,['0']*10,['0']*10,['0']*10,['0']*10,['0']*10,['0']*10,['0']*10]
 
 def redrawAll():
+    for item in App().spritelist[:]:
+        item.destroy()
     for row in range(0,10): 
         for col in range(0,10):
             if data['board'][row][col] == '0':
                 Sprite(whiteSquare,(40*row,40*col))
+            if data['board'][row][col] == '1':
+                Sprite(blackSquare,(40*row,40*col))
 
 def mouseClick(event):
     row = event.x//40
     col = event.y//40
     data['board'][row][col] = '1'
-    if data['board'][row][col] == '1':
-        Sprite(blackSquare,(40*row,40*col))
+    redrawAll()
 
 def numNeighbors(row,col):
-    
+    num = 0
+    if data['board'][row][col+1] == '1':
+        num = num + 1
+    if data['board'][row+1][col+1] == '1':
+        num = num + 1
+    if data['board'][row+1][col] == '1':
+        num = num + 1
+    if data['board'][row-1][col] == '1':
+        num = num + 1
+    if data['board'][row-1][col+1] == '1':
+        num = num + 1
+    if data['board'][row-1][col-1] == '1':
+        num = num + 1
+    if data['board'][row][col-1] == '1':
+        num = num + 1
+    if data['board'][row+1][col-1] == '1':
+        num = num + 1
+    return num
 
 if __name__ == '__main__':
     
