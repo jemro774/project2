@@ -51,6 +51,9 @@ def numNeighbors(row,col):
         num = num + 1
     return num
 
+def nextGeneration():
+    
+
 if __name__ == '__main__':
     
     data = {}
