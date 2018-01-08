@@ -6,11 +6,14 @@ from ggame import *
 
 black = Color(0x000000,1)
 white = Color(0xFFFFFF,1)
+grey = Color(0xD3D3D3,1)
 
 blackOutline = LineStyle(1,black)
 
 whiteSquare = RectangleAsset(40,40,blackOutline,white)
 blackSquare = RectangleAsset(40,40,blackOutline,black)
+textBox = RectangleAsset(80,40,blackOutline,grey)
+text = TextAsset('New Generation', fill=black, style='bold 12pt Times')
 
 def buildBoard():
     return [['0']*10,['0']*10,['0']*10,['0']*10,['0']*10,['0']*10,['0']*10,['0']*10,['0']*10,['0']*10]
@@ -24,10 +27,11 @@ def redrawAll():
                 Sprite(whiteSquare,(40*row,40*col))
             if data['board'][row][col] == '1':
                 Sprite(blackSquare,(40*row,40*col))
-    Sprite(blackSquare,(0,400))
+    Sprite(textBox,(0,440))
+    Sprite(text,(2,442))
 
 def mouseClick(event):
-    if event.x > 0 and event.x < 40 and event.y > 400 and event.y < 440:
+    if event.x > 0 and event.x < 80 and event.y > 440 and event.y < 480:
         nextGeneration()
     else:
         row = event.x//40
