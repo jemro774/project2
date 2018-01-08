@@ -36,21 +36,21 @@ def mouseClick(event):
 
 def numNeighbors(row,col):
     num = 0
-    if data['board'][row][col+1] == '1':
+    if col < 9 and data['board'][row][col+1] == '1':
         num = num + 1
-    if data['board'][row+1][col+1] == '1':
+    if row < 9 and col < 9 and data['board'][row+1][col+1] == '1':
         num = num + 1
-    if data['board'][row+1][col] == '1':
+    if row < 9 and data['board'][row+1][col] == '1':
         num = num + 1
-    if data['board'][row-1][col] == '1':
+    if row > 0 and data['board'][row-1][col] == '1':
         num = num + 1
-    if data['board'][row-1][col+1] == '1':
+    if row > 0 and col < 9 and data['board'][row-1][col+1] == '1':
         num = num + 1
-    if data['board'][row-1][col-1] == '1':
+    if row > 0 and col > 0 and data['board'][row-1][col-1] == '1':
         num = num + 1
-    if data['board'][row][col-1] == '1':
+    if col > 0 and data['board'][row][col-1] == '1':
         num = num + 1
-    if data['board'][row+1][col-1] == '1':
+    if row < 9 and col > 0 and data['board'][row+1][col-1] == '1':
         num = num + 1
     return num
 
