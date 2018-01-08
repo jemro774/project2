@@ -27,12 +27,13 @@ def redrawAll():
     Sprite(blackSquare,(0,400))
 
 def mouseClick(event):
-    row = event.x//40
-    col = event.y//40
-    data['board'][row][col] = '1'
-    redrawAll()
     if event.x > 0 and event.x < 40 and event.y > 400 and event.y < 440:
         nextGeneration()
+    else:
+        row = event.x//40
+        col = event.y//40
+        data['board'][row][col] = '1'
+        redrawAll()
 
 def numNeighbors(row,col):
     num = 0
@@ -56,17 +57,20 @@ def numNeighbors(row,col):
 
 def nextGeneration():
     newBoard = [['0']*10,['0']*10,['0']*10,['0']*10,['0']*10,['0']*10,['0']*10,['0']*10,['0']*10,['0']*10]
-    if data['board'][row][col] == '1':
-        if numNeighbors(row,col) < 2:
-            newBoard[row][col] == '0'
-        if numNeighbors(row,col) == 2 or 3:
-            newBoard[row][col] == '1'
-        if numNeighbors(row,col) > 3:
-            newBoard[row][col] == '0'
-    if data['board'][row][col] == '0':
-        if numNeighbors(row,col) == 3:
-            newBoard[row][col] == '1'
-    newBoard = data['board']
+    for row in range(0,10): 
+        for col in range(0,10):
+            if data['board'][row][col] == '1':
+                if numNeighbors(row,col) < 2:
+                    newBoard[row][col] = '0'
+                if numNeighbors(row,col) == 2 or 3:
+                    newBoard[row][col] = '1'
+                if numNeighbors(row,col) > 3:
+                    newBoard[row][col] = '0'
+            if data['board'][row][col] == '0':
+                if numNeighbors(row,col) == 3:
+                    newBoard[row][col] = '1'
+    data['board'] = newBoard
+    redrawAll()
 
 if __name__ == '__main__':
     
