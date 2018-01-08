@@ -1,5 +1,5 @@
 #Jack Robey 
-#12/14/17 
+#1/7/18
 #conwayGameOfLife.py 
 
 from ggame import *
