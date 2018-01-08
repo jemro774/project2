@@ -62,7 +62,7 @@ def nextGeneration():
             if data['board'][row][col] == '1':
                 if numNeighbors(row,col) < 2:
                     newBoard[row][col] = '0'
-                if numNeighbors(row,col) == 2 or 3:
+                if numNeighbors(row,col) == 2 or numNeighbors(row,col) == 3:
                     newBoard[row][col] = '1'
                 if numNeighbors(row,col) > 3:
                     newBoard[row][col] = '0'
